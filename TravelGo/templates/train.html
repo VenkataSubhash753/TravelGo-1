@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Your Train</title>
+</head>
+<body>
+    <h2>Search Trains</h2>
+    <form method="POST">
+        From: <input type="text" name="source" required>
+        To: <input type="text" name="destination" required>
+        Date: <input type="date" name="date" required>
+        <button type="submit">Search Trains</button>
+    </form>
+
+    {% if trains %}
+    <h3>Available Trains</h3>
+    {% for train in trains %}
+    <div style="padding: 10px; border-bottom: 1px dashed #ccc;">
+        <p>{{ train.name }} - {{ train.details }} (₹{{ train.price }})</p>
+        <form action="/book" method="POST">
+            <input type="hidden" name="type" value="Train">
+            <input type="hidden" name="source" value="{{ source }}">
+            <input type="hidden" name="destination" value="{{ destination }}">
+            <input type="hidden" name="date" value="{{ date }}">
+            <input type="hidden" name="details" value="{{ train.name }} {{ train.details }}">
+            <input type="hidden" name="price" value="{{ train.price }}">
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

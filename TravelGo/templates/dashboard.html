@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        .nav-links { padding: 10px; background: #eee; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ name }}!</h1>
+    <div class="nav-links">
+        <a href="/bus">Bus</a> | <a href="/train">Train</a> | <a href="/flight">Flight</a> | <a href="/hotels">Hotels</a> | <a href="/logout">Logout</a>
+    </div>
+    <h3>Travel History</h3>
+    <table>
+        <tr><th>ID</th><th>Type</th><th>Details</th><th>Date</th><th>Price</th></tr>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.booking_id }}</td>
+            <td>{{ booking.type }}</td>
+            <td>{{ booking.details }}</td>
+            <td>{{ booking.date }}</td>
+            <td>₹{{ booking.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

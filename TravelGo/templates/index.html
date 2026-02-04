@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TravelGo - Home</title>
+</head>
+<body>
+    <h1>Welcome to TravelGo</h1>
+    <p>Your cloud-powered travel booking platform.</p>
+    <nav>
+        {% if logged_in %}
+            <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a> | <a href="/register">Register</a>
+        {% endif %}
+    </nav>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Your Hotel</title>
+</head>
+<body>
+    <h2>Find Hotels</h2>
+    <form method="POST">
+        Select City: <input type="text" name="city" required>
+        <button type="submit">Search Hotels</button>
+    </form>
+
+    {% if hotels %}
+    <h3>Hotels in {{ city }}</h3>
+    {% for hotel in hotels %}
+    <div style="border: 1px solid #eee; margin: 10px; padding: 10px;">
+        <p><strong>{{ hotel.name }}</strong></p>
+        <p>Type: {{ hotel.details }} | Price: ₹{{ hotel.price }}/night</p>
+        <form action="/book" method="POST">
+            <input type="hidden" name="type" value="Hotel">
+            <input type="hidden" name="source" value="{{ city }}">
+            <input type="hidden" name="destination" value="{{ city }}">
+            <input type="hidden" name="date" value="N/A">
+            <input type="hidden" name="details" value="{{ hotel.name }} ({{ hotel.details }})">
+            <input type="hidden" name="price" value="{{ hotel.price }}">
+            <button type="submit">Reserve Room</button>
+        </form>
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

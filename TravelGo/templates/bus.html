@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Search Buses</title></head>
+<body>
+    <h2>Find a Bus</h2>
+    <form method="POST">
+        Source: <input type="text" name="source" required>
+        Destination: <input type="text" name="destination" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if buses %}
+    <h3>Available Buses</h3>
+    {% for bus in buses %}
+    <div>
+        <p>{{ bus.name }} - {{ bus.details }} (₹{{ bus.price }})</p>
+        <form action="/book" method="POST">
+            <input type="hidden" name="type" value="Bus">
+            <input type="hidden" name="source" value="{{ source }}">
+            <input type="hidden" name="destination" value="{{ destination }}">
+            <input type="hidden" name="details" value="{{ bus.name }} {{ bus.details }}">
+            <input type="hidden" name="price" value="{{ bus.price }}">
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

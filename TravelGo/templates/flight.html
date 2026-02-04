@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Search Flights</title></head>
+<body>
+    <h2>Search Flights</h2>
+    <form method="POST">
+        From: <input type="text" name="source" required>
+        To: <input type="text" name="destination" required>
+        Date: <input type="date" name="date" required>
+        <button type="submit">Search Flights</button>
+    </form>
+    {% if flights %}
+    {% for flight in flights %}
+    <div>
+        <p><strong>{{ flight.name }}</strong> ({{ flight.details }}) - ₹{{ flight.price }}</p>
+        <form action="/book" method="POST">
+            <input type="hidden" name="type" value="Flight">
+            <input type="hidden" name="source" value="{{ source }}">
+            <input type="hidden" name="destination" value="{{ destination }}">
+            <input type="hidden" name="date" value="{{ date }}">
+            <input type="hidden" name="details" value="{{ flight.name }} - {{ flight.details }}">
+            <input type="hidden" name="price" value="{{ flight.price }}">
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

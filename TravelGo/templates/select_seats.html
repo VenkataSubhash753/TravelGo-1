@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Seats</title>
+    <style>
+        .grid { display: grid; grid-template-columns: repeat(4, 50px); gap: 10px; margin-top: 20px; }
+        .seat { width: 50px; height: 50px; border: 1px solid #000; text-align: center; line-height: 50px; cursor: pointer; }
+        .selected { background-color: yellow; }
+    </style>
+</head>
+<body>
+    <h2>Select Seats for Your Journey</h2>
+    <div class="grid">
+        {% for i in range(1, 21) %}
+        <div class="seat" onclick="this.classList.toggle('selected')">{{ i }}</div>
+        {% endfor %}
+    </div>
+    <br>
+    <button onclick="window.location.href='/payment'">Confirm Seats & Pay</button>
+</body>
+</html>

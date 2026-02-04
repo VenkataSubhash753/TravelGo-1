@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Payment</title></head>
+<body>
+    <h2>Complete Your Booking</h2>
+    <p>Details: {{ booking.details }}</p>
+    <p>Total: ₹{{ booking.price }}</p>
+    <form action="/payment" method="POST">
+        <select name="method" required>
+            <option value="UPI">UPI</option>
+            <option value="Credit Card">Credit Card</option>
+        </select>
+        <input type="text" name="reference" placeholder="Transaction ID" required>
+        <button type="submit">Confirm & Pay</button>
+    </form>
+</body>
+</html>
