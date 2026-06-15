@@ -17,8 +17,8 @@ dynamodb = boto3.resource('dynamodb', region_name='ap-south-1')
 sns = boto3.client('sns', region_name='ap-south-1')
 
 # DynamoDB Tables - [cite: 2210, 2211]
-users_table = dynamodb.Table('travel-Users')
-bookings_table = dynamodb.Table('Bookings')
+users_table = dynamodb.Table('travel-users')
+bookings_table = dynamodb.Table('Travel_Bookings')
 
 @app.route('/')
 def home():
